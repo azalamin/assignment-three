@@ -3,19 +3,30 @@
 
 //Convert kilometer to meter
 function kilometerToMeter(kilometer){
-   var meter = kilometer * 1000;  // 1 kilometer = 1000 meter
+   if(kilometer < 0) {
+      return "Please make sure you have given positive input";
+   } else if(isNaN(kilometer)){
+      return "Input is not a text"
+   }  else{
+      var meter = kilometer * 1000;  // 1 kilometer = 1000 meter        
+   }
    return meter;
 }
 
 
 // Budget Calculator
 function budgetCalculator(watch, phone, laptop){
-   var watchPrice = watch * 50;  // 1 watch = 50
-   var phonePrice = phone * 100; // 1 phone = 100
-   var laptopPrice = laptop * 500;  // 1 laptop = 500
-
-   // Total budget of items
-   var totalCost = watchPrice + phonePrice + laptopPrice;
+   if(watch < 0 || phone < 0 || laptop < 0) {
+      return "Input cannot be nagative value"
+   } else if(isNaN(watch) || isNaN(phone) || isNaN(laptop)){
+      return "Input cannot be text"
+   } else{
+      var watchPrice = watch * 50;  // 1 watch = 50
+      var phonePrice = phone * 100; // 1 phone = 100
+      var laptopPrice = laptop * 500;  // 1 laptop = 500
+      // Total budget of items
+      var totalCost = watchPrice + phonePrice + laptopPrice;
+   }
    return totalCost;
 }
 
@@ -23,8 +34,11 @@ function budgetCalculator(watch, phone, laptop){
 // Hotel Cost Per day
 function hotelCost(days){
    var totalDaysCost = 0;
+   if( days < 0 || isNaN(days)){
+      return "Invalid number or keywords"
+   }
    // 1 to 10 days cost is 100
-   if(days <= 10){
+   else if(days <= 10){
       totalDaysCost = days * 100;
       // 11 to 20 days cost is 80
    } else if(days <= 20){
@@ -50,10 +64,7 @@ function megaFriend(friends){
    for(var i = 0; i < friends.length; i++){
       if(friends[i].length > max.length){
          max = friends[i]
-      } else{
-         return "invalid text"
       }
    }
    return max;
 }
-
